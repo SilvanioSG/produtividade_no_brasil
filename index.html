@@ -50,13 +50,21 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #1e2b37;
         }
-        /* transições suaves */
+        /* transições suaves para todos os cards */
         .card-hover {
-            transition: transform 0.2s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         .card-hover:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 30px -10px rgba(1, 31, 61, 0.15);
+            transform: translateY(-6px);
+            box-shadow: 0 25px 35px -12px rgba(1, 31, 61, 0.25);
+        }
+        /* efeito de transição para a foto */
+        .foto-transition {
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .foto-transition:hover {
+            transform: scale(1.08) rotate(2deg);
+            box-shadow: 0 20px 30px -8px rgba(255, 127, 80, 0.4);
         }
         /* responsividade extrema: garante que imagens não vazem */
         img {
@@ -72,33 +80,34 @@
 </head>
 <body class="bg-bg-light text-text-dark font-sans antialiased selection:bg-brand-primary/20">
 
-    <!-- ========== HEADER (INALTERADO ESTRUTURALMENTE, APENAS ANO AJUSTADO PARA 2026) ========= -->
+    <!-- ========== HEADER REORGANIZADO: FOTO ESQUERDA, NOME + EMAIL DIREITA ========= -->
     <header class="bg-brand-dark shadow-2xl">
         <div class="container mx-auto px-4 py-6 md:py-8 max-w-7xl">
-            <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-                <div class="flex-1 min-w-0">
-                    <h1 class="text-3xl md:text-4xl font-extrabold text-white leading-tight">
-                        Análise Executiva — Produtividade no Brasil
-                    </h1>
-                    <p class="text-lg text-white mt-1">
-                        Ferramenta Estratégica para Gestores | sg@silvaniogois.com.br
-                    </p>
-                    <p class="text-base italic text-white mt-2">
-                        Da análise macro à ação corporativa: estratégias para competitividade
-                    </p>
-                    <!-- atualização do período no cabeçalho (mantendo estilo e posição) -->
-                    <p class="text-xs text-white mt-3 opacity-80">
-                        Relatório Estratégico — 1995–2026
-                    </p>
-                </div>
-
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-6">
+                <!-- Foto à esquerda -->
                 <div class="flex-shrink-0">
                     <img
                         src="Executivo_Silvanio_Gestor.PNG"
                         alt="Foto Executiva"
-                        class="w-32 h-32 md:w-36 md:h-36 rounded-full object-cover border-4 border-white shadow-lg transition duration-300 hover:scale-105"
+                        class="w-32 h-32 md:w-36 md:h-36 rounded-full object-cover border-4 border-white shadow-lg foto-transition"
                         onerror="this.onerror=null;this.src='https://placehold.co/120x120/0D47A1/FFFFFF/png?text=SG+Exec';"
                     >
+                </div>
+                <!-- Nome e email à direita da foto -->
+                <div class="flex-1 text-center md:text-left">
+                    <h1 class="text-3xl md:text-4xl font-extrabold text-white leading-tight">
+                        Silvanio Gois
+                    </h1>
+                    <p class="text-lg text-white mt-1 break-words">
+                        sg@silvaniogois.com.br
+                    </p>
+                    <!-- Subtítulo e período abaixo do email (opcional, mas mantido) -->
+                    <p class="text-base italic text-white mt-3">
+                        Da análise macro à ação corporativa: estratégias para competitividade
+                    </p>
+                    <p class="text-xs text-white mt-2 opacity-80">
+                        Relatório Estratégico — 1995–2026
+                    </p>
                 </div>
             </div>
         </div>
@@ -106,7 +115,13 @@
 
     <main class="container mx-auto px-4 py-8 max-w-7xl">
 
-        <!-- SUMÁRIO EXECUTIVO (atualizado com contexto até 2026) -->
+        <!-- AGORA OS TÍTULOS PRINCIPAIS VÊM ANTES DO SUMÁRIO (conforme solicitado) -->
+        <div class="mb-6 text-center md:text-left">
+            <h2 class="text-3xl md:text-4xl font-bold text-brand-dark">Análise Executiva — Produtividade no Brasil</h2>
+            <p class="text-xl text-gray-600 mt-2">Ferramenta Estratégica para Gestores</p>
+        </div>
+
+        <!-- SUMÁRIO EXECUTIVO (agora abaixo dos títulos) -->
         <section class="mb-8">
             <div class="bg-white rounded-xl p-6 shadow-2xl border-t-4 border-brand-accent card-hover">
                 <h2 class="text-2xl font-bold text-brand-dark mb-4 border-b border-brand-accent/30 pb-2">Sumário Executivo Estratégico</h2>
@@ -313,7 +328,6 @@
             const years = Array.from({length: 32}, (_, i) => 1995 + i); // 1995..2026
 
             // Produtividade (base 1995=100) – valores reais até 2024, 2025 e 2026 projetados estáveis (124.4)
-            // Mantendo a tendência de estabilidade/leve declínio, mas coerente com a narrativa de +0,1% a.a.
             const prodValues = [
                 100, 101.5, 102.8, 103.5, 105.1, 106.7, 107.5, 108.3, 109.8, 111.4,  // 1995-2004
                 112.5, 114.8, 116.3, 118.5, 120.2, 122.1, 123.8, 125.1, 126.3, 127.1, // 2005-2014
